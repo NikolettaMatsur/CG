@@ -7,7 +7,7 @@ class WhiteDot extends DecoratedObject {
     var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false} );
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y , z);
-    geometry.applyMatrix( new THREE.Matrix4().makeRotationX(THREE.Math.degToRad(90)));
+    mesh.applyMatrix( new THREE.Matrix4().makeRotationX(THREE.Math.degToRad(90)));
 
     this.add(mesh);
 
