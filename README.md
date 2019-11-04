@@ -1,5 +1,5 @@
 # todo list
-
+* [ ]Clean Code, leave what necessary
 * [ ] Wall
 * [ ] Floor
 * [ ] Painintg
