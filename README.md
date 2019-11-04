@@ -1,6 +1,7 @@
 # todo list
 
 * [ ] Clean Code
+* [ ] Make the white dots and dark squares in a for cycle 
 * [ ] Wall
 * [ ] Floor
 * [ ] Painintg
