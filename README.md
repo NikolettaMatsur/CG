@@ -3,10 +3,10 @@
 * [ ] Wall
 * [ ] Floor
 * [ ] Painintg
-* [ ] Base to icosahedron
+* [ ] Base to Icosahedron
 * [ ] Icosahedron
-* [ ] 3 Materials - Phone, Basic and lambert on each element
+* [ ] 3 Materials - Phone, Basic and Lambert on each element
 * [ ] Holofotes
 * [ ] Camera Perspective
-* [ ] Camera ortgraphic
-* [ ] resize window
+* [ ] Camera Ortgraphic
+* [ ] Resize Window
