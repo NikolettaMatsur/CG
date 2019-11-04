@@ -18,10 +18,10 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
 
     // object creation
-    addObject( new Floor(0, -20, 10),  "floor");
-    //addObject( new Wall(0, 0, -13),  "wall");
-    addObject( new Frame(-15,4,-10), "frame");
-    addObject( new Painting(-15,4,-10), "painting");
+    addObject( new Floor(10, -10, -10),  "floor");
+    addObject( new Wall(10, 11.7, -33.5),  "wall");
+    addObject( new Frame(-15,15.7,-30), "frame");
+    //addObject( new Painting(-15,4,-5.99), "painting");
 }
 
 function createLight() {
@@ -33,7 +33,7 @@ function createLight() {
   // scene.add( directionalLight );
 
   var light = new THREE.DirectionalLight( 0xffffff );
-  light.position.set( 0, 1, -30 );
+  light.position.set( 20, 190, 90);
   scene.add(light);
   addObject(light, "directionalLight");
 }
@@ -45,13 +45,12 @@ function turnOnOffLight(){
   } else {
     light.intensity = 1;
   }
-  
 }
 
 /**
  * Adds an object to the list of tracket objects in the scene
- * @param {DecoratedObject} object - The Object add with "new ObjectName(params)"
- * @param {string} name - (Optional) Name for referencing the object
+ * @param {DecoratedObject} object - The Object add with "new Objectwindow.innerWidth / - 16ms)"
+ * @param {string} name - (Optional) Name for referencing the objectwindow.innerWidth / - 16
  */
 function addObject(object, name){
   if (typeof name !== "undefined"){ //if it is a named object
@@ -76,14 +75,30 @@ function getObject(name){
     console.log("error: object is not in the list")
   }
 }
+  var w_on = true;
+  var phong = true;
+
+function cameraExtra(){
+  console.log("extra");
+  camera = new THREE.OrthographicCamera(
+    window.innerWidth / - 8, window.innerWidth / 8,
+      window.innerHeight / 8, window.innerHeight / - 8,
+      -200, 500 );
+    camera.position.x = 0;
+     camera.position.y = 1;
+     camera.position.z = 0;
+
+     camera.lookAt(scene.position);
+
+}
 
 function createCameraPerspective() {
   let perspectiveCamera = new THREE.PerspectiveCamera(70,
     window.innerWidth / window.innerHeight,
     1,
     1000);
-  perspectiveCamera.position.x = 0;
-  perspectiveCamera.position.y = 0;
+  perspectiveCamera.position.x = -65;
+  perspectiveCamera.position.y = -10;
   perspectiveCamera.position.z = 70;
   perspectiveCamera.lookAt(scene.position);
 
@@ -92,20 +107,21 @@ function createCameraPerspective() {
 
 function createPaintingCamera() {
   let paintingCamera = new THREE.OrthographicCamera(
-  window.innerWidth / - 16, window.innerWidth / 16,
-    window.innerHeight / 16, window.innerHeight / - 16,
-    -200, 500 );
+    window.innerWidth / - 100, window.innerWidth / 100,
+    window.innerHeight / 100, window.innerHeight / - 100,
+    1, 100);
+   
     paintingCamera.position.x = 0;
-    paintingCamera.position.y = 0;
-    paintingCamera.position.z = 1;
-    //paintingCamera.lookAt(getObject("painting"));
+    paintingCamera.position.y = 25;
+    paintingCamera.position.z = 0;
+    //paintingCamera.lookAt(scene.position);
     addObject(paintingCamera, "paintingCamera");
 }
 
 function createCameras(){
   createCameraPerspective();
   createPaintingCamera();
-  camera = getObject("paintingCamera");
+  camera = getObject("perspectiveCamera");
 }
 
 function changeCameraPainting(){
@@ -124,9 +140,16 @@ function onResize() {
   var frustumSize = 100;
 
   if (camera === getObject("perspectiveCamera")) {
-    camera.aspect = aspect
     //Resizes the output canvas to (width, height) with device pixel ratio taken into account
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    if (aspect>=1){
+      camera.aspect = aspect
+      renderer.setSize( window.innerWidth, window.innerHeight );
+    } else {
+      camera.aspect = 1/aspect;
+      renderer.setSize( window.innerWidth, window.innerHeight );
+    }
+
+    console.log(aspect);
 
     // Updates the camera projection matrix. Must be called after any change of parameters.
     camera.updateProjectionMatrix();
@@ -160,7 +183,6 @@ function onKeyUp(e) {
 function onKeyDown(e) {
     'use strict';
 
-    //get here the objects
 
     keys_pressed[e.keyCode]=true
     for (var key in keys_pressed) {
@@ -178,16 +200,67 @@ function onKeyDown(e) {
               turnOnOffLight();
               break;
           case "87": //w
-              getObject("painting").basic_material();
-              getObject("frame").basic_material();
-              //getObject("wall").basic_material();
-              getObject("floor").basic_material();
-              //getObject("pedestal").basic_material();
-              //getObject("ico").basic_material();
+              if (w_on){
+                basicOn();
+                w_on = false;
+              } else {
+                basicOff(phong);
+                w_on = true;
+              }
               break;
+          case "69": //e
+              if (phong==true){
+                phong = false;
+                showLambert();
+              } else {
+                phong = true;
+                showPhong();
+              }
+              break;
+          case "78"://test n
+              cameraExtra();
+            break;
       }
     }
 
+}
+
+function basicOn(){
+  //getObject("painting").basic_material();
+  //getObject("frame").basic_material();
+  //getObject("wall").basic_material();
+  getObject("floor").basic_material();
+  //getObject("pedestal").basic_material();
+  //getObject("ico").basic_material();
+}
+
+function basicOff(phong){
+  if (phong){
+    showPhong();
+  } else {
+    showLambert();
+  }
+}
+
+function showLambert(){
+  console.log("lambert");
+  //getObject("painting").lambert_material();
+  //getObject("frame").lambert_material();
+  //getObject("wall").lambert_material();
+  getObject("floor").lambert_material();
+  //getObject("pedestal").lambert_material();
+  //getObject("ico").lambert_material();
+
+}
+
+function showPhong(){
+  console.log("phong");
+  //getObject("painting").phong_material();
+  //getObject("frame").phong_material();
+  //getObject("wall").phong_material();
+  getObject("floor").phong_material();
+  //getObject("pedestal").phong_material();
+  //getObject("ico").phong_material();
 }
 
 function render() {

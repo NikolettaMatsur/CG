@@ -2,7 +2,7 @@ class Wall extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CubeGeometry(window.innerWidth/2, window.innerHeight/2, 5);
+    var geometry = new THREE.CubeGeometry(150, 90, 3);
 
     this.material_basic = new THREE.MeshBasicMaterial( { color: 0xfffff5, wireframe: false} );
     this.material_phong = new THREE.MeshPhongMaterial( { color: 0xfffff5, specular: 0x555555, shininess: 30 } );

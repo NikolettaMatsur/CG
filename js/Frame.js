@@ -2,11 +2,11 @@ class Frame extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CubeGeometry(40, 40, 0)
+    var geometry = new THREE.CubeGeometry(40, 40, 4)
 
     this.material_basic = new THREE.MeshBasicMaterial( { color: 0xdaa520, wireframe: false} ); //golden colour
     this.material_phong = new THREE.MeshPhongMaterial( { color: 0xdaa520, specular: 0x555555, shininess: 30 } );
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xdaa520, emissive: 0x2a2a2a, emissiveIntensity: .5, side: THREE.DoubleSide});
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xdaa520, side: THREE.DoubleSide});
 
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);

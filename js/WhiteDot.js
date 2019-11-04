@@ -2,7 +2,7 @@ class WhiteDot extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CylinderGeometry(1, 0.5, 0.1, 20);
+    var geometry = new THREE.CylinderGeometry(1, 0.5, 2, 20);
 
     var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false} );
     var mesh = new THREE.Mesh(geometry, material);

@@ -2,20 +2,17 @@ class Painting extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CubeGeometry(36, 36, 0);
+    var geometry = new THREE.CubeGeometry(36, 36, 4);
 
     this.material_basic = new THREE.MeshBasicMaterial( { color: 0xf0f0f0, wireframe: false} );
-    this.material_phong = new THREE.MeshPhongMaterial({ color: 0xf0f0f0, shininess: 100, specular: 0x111111, shading: THREE.SmoothShading});
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xf0f0f0, emissive: 0x2a2a2a, emissiveIntensity: .5, side: THREE.DoubleSide});
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xf0f0f0, side: THREE.DoubleSide});
+    this.material_phong = new THREE.MeshPhongMaterial({ color: 0xf0f0f0, shininess:100 }); //shading: THREE.SmoothShading
   
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
 
     this.squares = []
     this.addSquares(x,y,z);
-   
-
-    new WhiteDot(x-5.6,y+2,z+1);
 
     this.add(this.mesh);
 

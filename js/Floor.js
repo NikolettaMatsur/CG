@@ -2,11 +2,11 @@ class Floor extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CubeGeometry(90, 3, 20);
+    var geometry = new THREE.CubeGeometry(150, 3, 90);
 
-    this.material_basic = new THREE.MeshBasicMaterial( { color: 0xdaa520, vertexColors: THREE.FaceColors, wireframe: false} );
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xdaa520, emissive: 0x2a2a2a, emissiveIntensity: .5, side: THREE.DoubleSide});
-    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xdaa520, specular: 0x555555, shininess: 30 } );
+    this.material_basic = new THREE.MeshBasicMaterial( { color: 0x2E2207, vertexColors: THREE.FaceColors, wireframe: false} );
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0x2E2207, emissive: 0x2E2207, emissiveIntensity: 0.3, side: THREE.DoubleSide});
+    this.material_phong = new THREE.MeshPhongMaterial( { color: 0x2E2207, shininess: 100 } );
 
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
