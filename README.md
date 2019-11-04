@@ -1,6 +1,7 @@
 # todo list
 
 * [ ] Clean Code
+* [ ] Make the white dots and dark squares in a for cycle 
 * [ ] Wall
 * [ ] Floor
 * [ ] Painintg
@@ -9,5 +10,5 @@
 * [ ] 3 Materials - Phone, Basic and Lambert on each element
 * [ ] Holofotes
 * [ ] Camera Perspective
-* [ ] Camera Ortgraphic
+* [ ] Camera Ortographic
 * [ ] Resize Window
