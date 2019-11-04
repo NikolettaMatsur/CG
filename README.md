@@ -10,5 +10,5 @@
 * [ ] 3 Materials - Phone, Basic and Lambert on each element
 * [ ] Holofotes
 * [ ] Camera Perspective
-* [ ] Camera Ortgraphic
+* [ ] Camera Ortographic
 * [ ] Resize Window
