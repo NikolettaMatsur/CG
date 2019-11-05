@@ -22,15 +22,15 @@ function createScene() {
     // object creation
     addObject( new Floor(20, -10, -10),  "floor");
     addObject( new Wall(20, 11.7, -33.2),  "wall");
-    addObject( new Frame(-5,15.7,-30), "frame");
-    addObject( new Painting(-5,15.7,-29.5), "painting");
+    addObject( new Frame(0,15.7,-30), "frame");
+    addObject( new Painting(0,15.7,-29.5), "painting");
     addObject( new Pedestal(5, -5, 5), "pedestal");
     addObject( new Icosahedron(5, 1.5 ,5), "ico");
     
-    addObject( new Projector(21, 30, -20, 65, -10), "projector1");
-    addObject( new Projector(-11, 30, -20, 45, 20), "projector2");
-    addObject( new Projector(35, 20, -20, -25, -15), "projector3");
-    addObject( new Projector(2, 3, -10, 45, 50), "projector4");
+    addObject( new Projector(10, 40, 15, 80, 0, "painting"), "projector1");
+    addObject( new Projector(-20, 40, 15, 90, 0, "painting"), "projector2");
+    addObject( new Projector(35, 20, 20, 10, -10, "ico"), "projector3");
+    addObject( new Projector(-10, 20, 20, 45, 45, "ico"), "projector4");
 }
 
 function createLight() {
@@ -199,7 +199,17 @@ function onKeyDown(e) {
     for (var key in keys_pressed) {
       if (!keys_pressed[key]) continue;
       switch (key) {
+          case "49": //1
+              getObject("projector1").light();
+              break;
           case "50": //2
+              getObject("projector2").light();
+              break;
+          case "51": //3
+              getObject("projector3").light();
+              break;
+          case "52": //4
+              getObject("projector4").light();
               break;
           case "53": //5
               changeCameraPerspective();
