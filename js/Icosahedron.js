@@ -5,11 +5,13 @@ class Icosahedron extends DecoratedObject {
     this.createIcosahedron();
 
     //var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: false} );
-    this.material_basic = new THREE.MeshBasicMaterial( { color: 0xC38091,  wireframe: false} );
-    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xC38091, specular: 0x291B1E, shininess: 100 } );
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0x8C38091, side: THREE.DoubleSide});
+    this.material_basic = new THREE.MeshBasicMaterial( { color: 0xE69138,  wireframe: false} );
+    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xE69138, specular: 0x291B1E, shininess: 100 } );
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xE69138, side: THREE.DoubleSide});
     this.mesh = new THREE.Mesh(this.geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
+
+    this.mesh.scale.multiplyScalar(7);
 
     this.add(this.mesh);
 
@@ -25,20 +27,20 @@ class Icosahedron extends DecoratedObject {
     this.geometry = new THREE.Geometry();
 
     this.geometry.vertices.push(
-        new THREE.Vector3(-1, fi, 0), //10  0
-        new THREE.Vector3(1, fi, 0),  //8   1
-        new THREE.Vector3(-1, -fi, 0), //11 2
-        new THREE.Vector3(1, -fi, 0), //9   3
+        new THREE.Vector3(-1.1, fi, 0), //10  0
+        new THREE.Vector3(1.3, fi, 0),  //8   1
+        new THREE.Vector3(-1.4, -fi, 0), //11 2
+        new THREE.Vector3(1.56, -fi, 0), //9   3
 
-        new THREE.Vector3(0, -1, fi), //1   4
-        new THREE.Vector3(0, 1, fi), //0    5
-        new THREE.Vector3(0, -1, -fi), //2  6
+        new THREE.Vector3(0, -1.67, fi), //1   4
+        new THREE.Vector3(0, 1.32, fi), //0    5
+        new THREE.Vector3(0, -1.9, -fi), //2  6
         new THREE.Vector3(0, 1, -fi), //3   7
 
-        new THREE.Vector3(fi,0,-1), //5     8
-        new THREE.Vector3(fi,0,1),  //4     9
-        new THREE.Vector3(-fi,0,-1), //7    10
-        new THREE.Vector3(-fi,0,1), //6     11
+        new THREE.Vector3(fi,0,-1.42), //5     8
+        new THREE.Vector3(fi,0,1.17),  //4     9
+        new THREE.Vector3(-fi,0,-1.15), //7    10
+        new THREE.Vector3(-fi,0,1.02), //6     11
 
 
           // - 1,  t,  0,    1,  t,  0,   - 1, - t,  0,    1, - t,  0,
@@ -77,11 +79,12 @@ class Icosahedron extends DecoratedObject {
         new THREE.Face3(9, 8, 1),
     );
 
+    // normalize the geometry
+    this.geometry.normalize();
+
      // compute Normals
     this.geometry.computeVertexNormals();
  
-    // normalize the geometry
-    this.geometry.normalize();
  
   }
 

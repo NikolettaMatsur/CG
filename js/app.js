@@ -14,6 +14,8 @@ function createScene() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0xfffff5 );
 
+   //scene.background = new THREE.Color( 0x0c0c0c);
+
 
     scene.add(new THREE.AxisHelper(10));
 
@@ -23,7 +25,12 @@ function createScene() {
     addObject( new Frame(-5,15.7,-30), "frame");
     addObject( new Painting(-5,15.7,-29.5), "painting");
     addObject( new Pedestal(5, -5, 5), "pedestal");
-    addObject( new Icosahedron(5,10,5), "ico");
+    addObject( new Icosahedron(5, 1.5 ,5), "ico");
+    
+    addObject( new Projector(21, 30, -20, 65, -10), "projector1");
+    addObject( new Projector(-11, 30, -20, 45, 20), "projector2");
+    addObject( new Projector(35, 20, -20, -25, -15), "projector3");
+    addObject( new Projector(2, 3, -10, 45, 50), "projector4");
 }
 
 function createLight() {
@@ -235,7 +242,7 @@ function basicOn(){
   getObject("wall").basic_material();
   getObject("floor").basic_material();
   getObject("pedestal").basic_material();
-  //getObject("ico").basic_material();
+  getObject("ico").basic_material();
 }
 
 function basicOff(phong){
@@ -253,7 +260,7 @@ function showLambert(){
   getObject("wall").lambert_material();
   getObject("floor").lambert_material();
   getObject("pedestal").lambert_material();
-  //getObject("ico").lambert_material();
+  getObject("ico").lambert_material();
 
 }
 
@@ -264,7 +271,7 @@ function showPhong(){
   getObject("wall").phong_material();
   getObject("floor").phong_material();
   getObject("pedestal").phong_material();
-  //getObject("ico").phong_material();
+  getObject("ico").phong_material();
 }
 
 function render() {
