@@ -12,9 +12,9 @@ function createScene() {
     'use strict';
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0xfffff5 );
+    //scene.background = new THREE.Color( 0xfffff5 );
 
-   //scene.background = new THREE.Color( 0x0c0c0c);
+   scene.background = new THREE.Color( 0x0c0c0c);
 
 
     scene.add(new THREE.AxisHelper(10));
@@ -22,15 +22,15 @@ function createScene() {
     // object creation
     addObject( new Floor(20, -10, -10),  "floor");
     addObject( new Wall(20, 11.7, -33.2),  "wall");
-    addObject( new Frame(0,15.7,-30), "frame");
-    addObject( new Painting(0,15.7,-29.5), "painting");
+    addObject( new Frame(2,15.7,-30), "frame");
+    addObject( new Painting(2,15.7,-29.5), "painting");
     addObject( new Pedestal(5, -5, 5), "pedestal");
     addObject( new Icosahedron(5, 1.5 ,5), "ico");
     
     addObject( new Projector(10, 40, 15, 80, 0, "painting"), "projector1");
-    addObject( new Projector(-20, 40, 15, 90, 0, "painting"), "projector2");
-    addObject( new Projector(35, 20, 20, 10, -10, "ico"), "projector3");
-    addObject( new Projector(-10, 20, 20, 45, 45, "ico"), "projector4");
+    addObject( new Projector(-20, 40, 15, 90, 20, "painting"), "projector2");
+    addObject( new Projector(-10, 20, 20, 45, 45, "ico"), "projector3");
+    addObject( new Projector(35, 20, 20, 10, -10, "ico"), "projector4");
 }
 
 function createLight() {
@@ -44,9 +44,9 @@ function createLight() {
   var light = new THREE.DirectionalLight( 0xffffff,1);
   //light.position.set( 20, 190, 90);
    //light.position.set(60,15,60);
-  //light.position.set(50,20,60);
-  light.position.set(1,0,1);
-  //light.position.set(-1,0,1);
+  // light.position.set(50,20,60);
+  // light.position.set(1,0,1);
+  light.position.set(-5,0,1);
   scene.add(light);
   addObject(light, "directionalLight");
 }

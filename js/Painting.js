@@ -17,13 +17,13 @@ class Painting extends DecoratedObject {
     this.dots = []
     this.addDots(x,y,z+0.1);
 
-    this.add(this.mesh);
-
-    scene.add(this);
-
+    
     this.position.x = x;
     this.position.y = y;
     this.position.z = z;
+
+    this.add(this.mesh);
+    scene.add(this);
   }
 
   addSquares(x,y,z){

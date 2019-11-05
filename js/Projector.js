@@ -14,17 +14,10 @@ class Projector extends DecoratedObject {
     this.group.rotateZ(THREE.Math.degToRad(degreesz));
   
 
-    this.spotLight = new THREE.SpotLight( 0xfdfdfd, 0, 100, THREE.Math.degToRad(170),0.2, 0.9 );
-    // this.spotLight.position.set( x, y, z );
+    this.spotLight = new THREE.SpotLight( 0xfdfdfd, 0, 110, THREE.Math.degToRad(40),0.2, 0.9 );
+    this.spotLight.position.set( x, y, z );
     let object = getObject(target_name);
-    this.spotLight.target.position.set(object.position.x,object.position.y, object.position.z) 
-    this.spotLight.rotateX(THREE.Math.degToRad(degreesx));
-    this.spotLight.rotateZ(THREE.Math.degToRad(degreesz));
-
-
-    // var spotLightHelper = new THREE.SpotLightHelper( this.spotLight );
-    // scene.add( spotLightHelper );
-
+    this.spotLight.target.position.set(object.position.x,object.position.y, object.position.z); 
     
     
     this.group.position.x = x;
@@ -33,14 +26,20 @@ class Projector extends DecoratedObject {
     
     this.spotLight.position.x = x;
     this.spotLight.position.y = y;
-    this.spotLight.position.z = z;
+    this.spotLight.position.z = z;    
     
+    // this.spotLight.rotateX(THREE.Math.degToRad(degreesx));
+    // this.spotLight.rotateZ(THREE.Math.degToRad(degreesz));
+    this.spotLight.target.updateMatrixWorld();
+    
+    // var spotLightHelper = new THREE.SpotLightHelper( this.spotLight );
+    // scene.add( spotLightHelper );
     scene.add(this.spotLight);
     scene.add(this.group);
   }
 
   addLamp(x,y,z){
-    var geometry =  new THREE.SphereGeometry( 4, 32, 32 );
+    var geometry =  new THREE.SphereGeometry( 3, 32, 32 );
 
     let material_phong = new THREE.MeshPhongMaterial( { color: 0xFCE5CD, specular: 0xFCE5CD, shininess: 100 } );
     this.lamp = new THREE.Mesh(geometry, material_phong);
@@ -74,10 +73,10 @@ class Projector extends DecoratedObject {
   }
 
   light(){
-    if (this.spotLight.intensity == 0.7){
+    if (this.spotLight.intensity == 1){
       this.spotLight.intensity = 0;
     } else {
-      this.spotLight.intensity = 0.7;
+      this.spotLight.intensity = 1;
     }
   }
 }
