@@ -1,13 +1,13 @@
-class WhiteDot extends DecoratedObject {
+class Pedestal extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CylinderGeometry(1, 1, 0.01, 20);
+    var geometry = new THREE.CylinderGeometry(8, 3, 15, 32);
 
     //var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: false} );
-    this.material_basic = new THREE.MeshBasicMaterial( { color: 0xFFFFFF,  wireframe: false} );
-    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0xFFFFFF, shininess: 1 } );
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide});
+    this.material_basic = new THREE.MeshBasicMaterial( { color: 0x801A35,  wireframe: false} );
+    this.material_phong = new THREE.MeshPhongMaterial( { color: 0x801A35, specular: 0x4a2700, shininess: 100 } );
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0x801A35, side: THREE.DoubleSide});
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
 

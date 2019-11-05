@@ -22,6 +22,8 @@ function createScene() {
     addObject( new Wall(20, 11.7, -33.2),  "wall");
     addObject( new Frame(-5,15.7,-30), "frame");
     addObject( new Painting(-5,15.7,-29.5), "painting");
+    addObject( new Pedestal(5, -5, 5), "pedestal");
+    addObject( new Icosahedron(5,10,5), "ico");
 }
 
 function createLight() {
@@ -32,9 +34,12 @@ function createLight() {
   // var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5);
   // scene.add( directionalLight );
 
-  var light = new THREE.DirectionalLight( 0xffffff, 1);
-  // light.position.set( 20, 190, 90);
-  light.position.set(60,5,60);
+  var light = new THREE.DirectionalLight( 0xffffff,1);
+  //light.position.set( 20, 190, 90);
+   //light.position.set(60,15,60);
+  //light.position.set(50,20,60);
+  light.position.set(1,0,1);
+  //light.position.set(-1,0,1);
   scene.add(light);
   addObject(light, "directionalLight");
 }
@@ -229,7 +234,7 @@ function basicOn(){
   getObject("frame").basic_material();
   getObject("wall").basic_material();
   getObject("floor").basic_material();
-  //getObject("pedestal").basic_material();
+  getObject("pedestal").basic_material();
   //getObject("ico").basic_material();
 }
 
@@ -247,7 +252,7 @@ function showLambert(){
   getObject("frame").lambert_material();
   getObject("wall").lambert_material();
   getObject("floor").lambert_material();
-  //getObject("pedestal").lambert_material();
+  getObject("pedestal").lambert_material();
   //getObject("ico").lambert_material();
 
 }
@@ -258,7 +263,7 @@ function showPhong(){
   getObject("frame").phong_material();
   getObject("wall").phong_material();
   getObject("floor").phong_material();
-  //getObject("pedestal").phong_material();
+  getObject("pedestal").phong_material();
   //getObject("ico").phong_material();
 }
 
