@@ -18,10 +18,10 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
 
     // object creation
-    addObject( new Floor(10, -10, -10),  "floor");
-    addObject( new Wall(10, 11.7, -33.5),  "wall");
-    addObject( new Frame(-15,15.7,-30), "frame");
-    //addObject( new Painting(-15,4,-5.99), "painting");
+    addObject( new Floor(20, -10, -10),  "floor");
+    addObject( new Wall(20, 11.7, -33.2),  "wall");
+    addObject( new Frame(-5,15.7,-30), "frame");
+    addObject( new Painting(-5,15.7,-29.5), "painting");
 }
 
 function createLight() {
@@ -32,8 +32,9 @@ function createLight() {
   // var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5);
   // scene.add( directionalLight );
 
-  var light = new THREE.DirectionalLight( 0xffffff );
-  light.position.set( 20, 190, 90);
+  var light = new THREE.DirectionalLight( 0xffffff, 1);
+  // light.position.set( 20, 190, 90);
+  light.position.set(60,5,60);
   scene.add(light);
   addObject(light, "directionalLight");
 }
@@ -100,6 +101,7 @@ function createCameraPerspective() {
   perspectiveCamera.position.x = -65;
   perspectiveCamera.position.y = -10;
   perspectiveCamera.position.z = 70;
+
   perspectiveCamera.lookAt(scene.position);
 
   addObject(perspectiveCamera, "perspectiveCamera");
@@ -111,10 +113,9 @@ function createPaintingCamera() {
     window.innerHeight / 100, window.innerHeight / - 100,
     1, 100);
    
-    paintingCamera.position.x = 0;
+    paintingCamera.position.x = 5;
     paintingCamera.position.y = 25;
     paintingCamera.position.z = 0;
-    //paintingCamera.lookAt(scene.position);
     addObject(paintingCamera, "paintingCamera");
 }
 
@@ -144,12 +145,10 @@ function onResize() {
     if (aspect>=1){
       camera.aspect = aspect
       renderer.setSize( window.innerWidth, window.innerHeight );
-    } else {
-      camera.aspect = 1/aspect;
-      renderer.setSize( window.innerWidth, window.innerHeight );
-    }
 
-    console.log(aspect);
+    } else {
+      renderer.setSize( window.innerWidth, window.innerWidth);
+    }
 
     // Updates the camera projection matrix. Must be called after any change of parameters.
     camera.updateProjectionMatrix();
@@ -226,9 +225,9 @@ function onKeyDown(e) {
 }
 
 function basicOn(){
-  //getObject("painting").basic_material();
-  //getObject("frame").basic_material();
-  //getObject("wall").basic_material();
+  getObject("painting").basic_material();
+  getObject("frame").basic_material();
+  getObject("wall").basic_material();
   getObject("floor").basic_material();
   //getObject("pedestal").basic_material();
   //getObject("ico").basic_material();
@@ -244,9 +243,9 @@ function basicOff(phong){
 
 function showLambert(){
   console.log("lambert");
-  //getObject("painting").lambert_material();
-  //getObject("frame").lambert_material();
-  //getObject("wall").lambert_material();
+  getObject("painting").lambert_material();
+  getObject("frame").lambert_material();
+  getObject("wall").lambert_material();
   getObject("floor").lambert_material();
   //getObject("pedestal").lambert_material();
   //getObject("ico").lambert_material();
@@ -255,9 +254,9 @@ function showLambert(){
 
 function showPhong(){
   console.log("phong");
-  //getObject("painting").phong_material();
-  //getObject("frame").phong_material();
-  //getObject("wall").phong_material();
+  getObject("painting").phong_material();
+  getObject("frame").phong_material();
+  getObject("wall").phong_material();
   getObject("floor").phong_material();
   //getObject("pedestal").phong_material();
   //getObject("ico").phong_material();

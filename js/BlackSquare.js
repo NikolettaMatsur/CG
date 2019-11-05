@@ -2,10 +2,10 @@ class BlackSquare extends DecoratedObject {
   constructor(x, y, z) {
     super()
     
-    var geometry = new THREE.CubeGeometry(6, 6, 2);
+    var geometry = new THREE.CubeGeometry(6, 6, 0.2);
 
     this.material_basic = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: false} );
-    this.material_phong = new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x555555, shininess: 30 } );
+    this.material_phong = new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x111111, shininess: 1 } );
     this.material_lambert = new THREE.MeshLambertMaterial({ color: 0x000000, side: THREE.DoubleSide});
 
     this.mesh = new THREE.Mesh(geometry, this.material_phong);

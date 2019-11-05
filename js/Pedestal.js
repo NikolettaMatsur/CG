@@ -10,7 +10,6 @@ class WhiteDot extends DecoratedObject {
     this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide});
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
-    this.mesh.rotateX(THREE.Math.degToRad(90));
 
     this.add(this.mesh);
 
@@ -23,7 +22,6 @@ class WhiteDot extends DecoratedObject {
   }
 
   phong_material(){ 
-    console.log("PHONG");
     this.mesh.material = this.material_phong;
   }
 

@@ -5,8 +5,8 @@ class Wall extends DecoratedObject {
     var geometry = new THREE.CubeGeometry(150, 90, 3);
 
     this.material_basic = new THREE.MeshBasicMaterial( { color: 0xfffff5, wireframe: false} );
-    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xfffff5, specular: 0x555555, shininess: 30 } );
-    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xfffff5, emissive: 0x2a2a2a, emissiveIntensity: .5, side: THREE.DoubleSide});
+    this.material_phong = new THREE.MeshPhongMaterial( { color: 0xfffff5, shininess: 30 } );
+    this.material_lambert = new THREE.MeshLambertMaterial({ color: 0xfffff5, emissive: 0x2a2a2a, emissiveIntensity: 0, side: THREE.DoubleSide});
 
     this.mesh = new THREE.Mesh(geometry, this.material_phong);
     this.mesh.position.set(x, y , z);
